@@ -1,19 +1,461 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>My static Space</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div class="card">
-			<h1>Welcome to your static Space!</h1>
-			<p>You can modify this app directly by editing <i>index.html</i> in the Files and versions tab.</p>
-			<p>
-				Also don't forget to check the
-				<a href="https://huggingface.co/docs/hub/spaces" target="_blank">Spaces documentation</a>.
-			</p>
-		</div>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrarian Insights: Open-Source AI Security</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 50%, #fefce8 100%);
+        }
+        
+        .insight-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+        }
+        
+        .insight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tag {
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .recommendation-chip {
+            background-color: #ecfdf5;
+            color: #065f46;
+        }
+        
+        .source-chip {
+            background-color: #eff6ff;
+            color: #1e40af;
+        }
+        
+        .contrarian-chip {
+            background-color: #fef2f2;
+            color: #991b1b;
+        }
+        
+        .tab-active {
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        
+        .animated-underline {
+            position: relative;
+        }
+        
+        .animated-underline::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .animated-underline:hover::after {
+            width: 100%;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <div class="container mx-auto px-4 py-12">
+        <!-- Header -->
+        <header class="mb-16 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Contrarian Insights on</h1>
+            <div class="inline-block relative">
+                <span class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-emerald-600">
+                    Open-Source AI Security
+                </span>
+                <div class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-emerald-400 rounded-full"></div>
+            </div>
+            <p class="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
+                Challenging conventional wisdom about open-source AI in embedded systems and IoT security
+            </p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="flex justify-center mb-12 border-b border-gray-200">
+            <div class="flex space-x-8">
+                <button onclick="showSection('insights')" class="tab-active pb-4 px-1 text-sm font-medium animated-underline">
+                    <i class="fas fa-lightbulb mr-2"></i>Key Insights
+                </button>
+                <button onclick="showSection('recommendations')" class="pb-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 animated-underline">
+                    <i class="fas fa-check-circle mr-2"></i>Recommendations
+                </button>
+                <button onclick="showSection('sources')" class="pb-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 animated-underline">
+                    <i class="fas fa-book mr-2"></i>Research Sources
+                </button>
+                <button onclick="showSection('reflections')" class="pb-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 animated-underline">
+                    <i class="fas fa-brain mr-2"></i>Further Reflections
+                </button>
+            </div>
+        </div>
+
+        <!-- Insights Section -->
+        <section id="insights-section" class="fade-in">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Insight 1 -->
+                <div class="insight-card bg-white rounded-xl p-6">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-4">
+                            <i class="fas fa-code-branch text-blue-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <span class="tag bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-semibold">Symbiosis</span>
+                            <h3 class="text-xl font-bold mt-2">Open-source as Symbiotic Offense-Defense Tool</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Open-source AI lowers costs for defenders and speeds innovation, but equally empowers adversaries to craft AI-powered malware and evasion scripts (Promptfoo). Contrast this with closed-source kits: defenders should exploit community agility by continuously forking and hardening models before deployment.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="contrarian-chip px-3 py-1 rounded-full text-xs font-medium">Contrarian View</span>
+                        <span class="source-chip px-3 py-1 rounded-full text-xs font-medium">Promptfoo</span>
+                    </div>
+                </div>
+
+                <!-- Insight 2 -->
+                <div class="insight-card bg-white rounded-xl p-6">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-red-100 p-2 rounded-lg mr-4">
+                            <i class="fas fa-lock-open text-red-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <span class="tag bg-red-100 text-red-800 px-2 py-1 rounded-full font-semibold">Governance</span>
+                            <h3 class="text-xl font-bold mt-2">Fragmented Governance Breeds Hidden Backdoors</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Volunteer-run repositories often lack formal security processes, making dependency hijacks and malicious pull-requests stealth threats to device fleets (arXiv, WIRED). Instead of trusting upstream, manufacturers can establish vetted-AI registries with mandatory static analysis and code signing.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="contrarian-chip px-3 py-1 rounded-full text-xs font-medium">Contrarian View</span>
+                        <span class="source-chip px-3 py-1 rounded-full text-xs font-medium">arXiv</span>
+                        <span class="source-chip px-3 py-1 rounded-full text-xs font-medium">WIRED</span>
+                    </div>
+                </div>
+
+                <!-- Insight 3 -->
+                <div class="insight-card bg-white rounded-xl p-6">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-purple-100 p-2 rounded-lg mr-4">
+                            <i class="fas fa-microchip text-purple-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <span class="tag bg-purple-100 text-purple-800 px-2 py-1 rounded-full font-semibold">Hardware</span>
+                            <h3 class="text-xl font-bold mt-2">Hardware Heterogeneity & Model Drift</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        TinyNPUs and specialized ASICs vary widely in numeric precision and instruction sets—models fine-tuned on one platform can misclassify or crash on another, creating rare but high-impact failures (ScienceDirect, eprints.cs.univie.ac.at). A contrarian fix: embed cross-silicon validation sandboxes in CI pipelines to catch drift before OTA updates roll out.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="contrarian-chip px-3 py-1 rounded-full text-xs font-medium">Contrarian View</span>
+                        <span class="source-chip px-3 py-1 rounded-full text-xs font-medium">ScienceDirect</span>
+                        <span class="source-chip px-3 py-1 rounded-full text-xs font-medium">Univie.ac.at</span>
+                    </div>
+                </div>
+
+                <!-- Insight 4 -->
+                <div class="insight-card bg-white rounded-xl p-6">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-green-100 p-2 rounded-lg mr-4">
+                            <i class="fas fa-users text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <span class="tag bg-green-100 text-green-800 px-2 py-1 rounded-full font-semibold">Community</span>
+                            <h3 class="text-xl font-bold mt-2">Community-Driven Red-Team Simulations</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Imagining manufacturer-led adversarial exercises using the same open-source stacks attackers rely on can uncover zero-day AI logic flaws and supply-chain weaknesses—transforming reactive patching into proactive defense (Securityium, GitHub).
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="contrarian-chip px-3 py-1 rounded-full text-xs font-medium">Contrarian View</span>
+                        <span class="source-chip px-3 py-1 rounded-full text-xs font-medium">Securityium</span>
+                        <span class="source-chip px-3 py-1 rounded-full text-xs font-medium">GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations Section (Hidden by default) -->
+        <section id="recommendations-section" class="hidden fade-in">
+            <div class="bg-white rounded-xl p-8 shadow-lg">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-4">
+                    <i class="fas fa-check-circle text-blue-500 mr-2"></i>Key Recommendations
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Recommendation 1 -->
+                    <div class="flex items-start">
+                        <div class="bg-blue-50 p-3 rounded-lg mr-4">
+                            <span class="text-blue-600 font-bold">1</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Build a Private "Vetted-AI" Registry</h3>
+                            <p class="text-gray-600 mt-1">
+                                Fork critical open-source AI projects (e.g., TinyML anomaly detectors), run automated fuzz testing and static analysis, then cryptographically sign approved versions for device OTA distribution (Open Source For You, Semiconductor Engineering).
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Recommendation 2 -->
+                    <div class="flex items-start">
+                        <div class="bg-blue-50 p-3 rounded-lg mr-4">
+                            <span class="text-blue-600 font-bold">2</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Implement Zero-Trust Edge Attestation</h3>
+                            <p class="text-gray-600 mt-1">
+                                Require every inference and model update to include digital certificates and tamper-evident logs, even on constrained MCUs—ensuring unauthorized agents can be promptly revoked (news.aliasrobotics.com, MDPI).
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Recommendation 3 -->
+                    <div class="flex items-start">
+                        <div class="bg-blue-50 p-3 rounded-lg mr-4">
+                            <span class="text-blue-600 font-bold">3</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Orchestrate Open-Source Red-Team Labs</h3>
+                            <p class="text-gray-600 mt-1">
+                                Periodically assemble cross-functional teams to attack your own IoT AI stack—leveraging community-built frameworks like CAI for automated reconnaissance, exploitation, and validation (news.aliasrobotics.com, GitHub).
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Recommendation 4 -->
+                    <div class="flex items-start">
+                        <div class="bg-blue-50 p-3 rounded-lg mr-4">
+                            <span class="text-blue-600 font-bold">4</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Form an Industry AI-Security Consortium</h3>
+                            <p class="text-gray-600 mt-1">
+                                Pool audit resources across device makers to co-maintain a secure core of vetted models and share threat intelligence on emerging AI-centric exploits (e-zigurat.com, SpringerLink).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sources Section (Hidden by default) -->
+        <section id="sources-section" class="hidden fade-in">
+            <div class="bg-white rounded-xl p-8 shadow-lg">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-4">
+                    <i class="fas fa-book text-blue-500 mr-2"></i>Research Sources
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Primary Sources -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4 text-gray-700 flex items-center">
+                            <i class="fas fa-star text-yellow-400 mr-2"></i>Primary Sources
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-blue-400 text-xs mt-1.5 mr-2"></i>
+                                <span>Promptfoo - Open-source AI security analysis</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-blue-400 text-xs mt-1.5 mr-2"></i>
+                                <span>arXiv - Academic research on AI vulnerabilities</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-blue-400 text-xs mt-1.5 mr-2"></i>
+                                <span>ScienceDirect - Hardware-specific AI challenges</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-blue-400 text-xs mt-1.5 mr-2"></i>
+                                <span>GitHub - Community security frameworks</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Secondary Sources -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4 text-gray-700 flex items-center">
+                            <i class="fas fa-newspaper text-blue-400 mr-2"></i>Industry Reports
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-blue-400 text-xs mt-1.5 mr-2"></i>
+                                <span>WIRED - Security journalism</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-blue-400 text-xs mt-1.5 mr-2"></i>
+                                <span>Semiconductor Engineering - Hardware security</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-blue-400 text-xs mt-1.5 mr-2"></i>
+                                <span>MDPI - Open-access research</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-blue-400 text-xs mt-1.5 mr-2"></i>
+                                <span>SpringerLink - Academic publications</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <h3 class="text-lg font-semibold mb-4 text-gray-700 flex items-center">
+                        <i class="fas fa-info-circle text-blue-400 mr-2"></i>Limited Applicability Sources
+                    </h3>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <p class="text-gray-600">
+                            These sources provided context but were less directly applicable to embedded open-source AI security:
+                        </p>
+                        <ul class="mt-2 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-minus text-gray-400 text-xs mt-1.5 mr-2"></i>
+                                <span>E-ziguarat on data bias in smart cities - rich on annotation bias but not on IoT-AI integration</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-minus text-gray-400 text-xs mt-1.5 mr-2"></i>
+                                <span>ScienceDirect's human-centered smart cities analysis - strong on governance but weak on embedded AI frameworks</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflections Section (Hidden by default) -->
+        <section id="reflections-section" class="hidden fade-in">
+            <div class="bg-white rounded-xl p-8 shadow-lg">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-4">
+                    <i class="fas fa-brain text-blue-500 mr-2"></i>Further Reflections
+                </h2>
+                
+                <div class="space-y-8">
+                    <!-- Reflection 1 -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3 text-gray-700">
+                            How can supply-chain isolation meet the need for rapid feature updates?
+                        </h3>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <p class="text-blue-800 font-medium">
+                                <i class="fas fa-lightbulb text-blue-500 mr-2"></i>Approach:
+                            </p>
+                            <p class="text-gray-700 mt-1">
+                                Use containerized micro-frameworks that allow hot-swapping of model modules under strict cryptographic gating.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Reflection 2 -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3 text-gray-700">
+                            What metrics best capture "AI model trustworthiness" on IoT devices?
+                        </h3>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <p class="text-blue-800 font-medium">
+                                <i class="fas fa-lightbulb text-blue-500 mr-2"></i>Approach:
+                            </p>
+                            <p class="text-gray-700 mt-1">
+                                Combine provenance attestations, anomaly-detection false-positive rates, and hardware-drift tolerance scores into a unified risk index.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Thoughts -->
+                    <div class="mt-8">
+                        <h3 class="text-lg font-semibold mb-3 text-gray-700">
+                            Emerging Considerations
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-700">
+                                    <span class="font-medium">Energy-Efficient Verification:</span> How to maintain security attestation on battery-powered edge devices without compromising uptime.
+                                </p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-gray-700">
+                                    <span class="font-medium">Federated Learning Risks:</span> The security implications of decentralized model training across heterogeneous IoT networks.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.getElementById('insights-section').classList.add('hidden');
+            document.getElementById('recommendations-section').classList.add('hidden');
+            document.getElementById('sources-section').classList.add('hidden');
+            document.getElementById('reflections-section').classList.add('hidden');
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('[onclick^="showSection"]');
+            tabs.forEach(tab => {
+                tab.classList.remove('tab-active');
+                tab.classList.add('text-gray-500');
+                tab.classList.remove('text-gray-700');
+            });
+            
+            // Show selected section
+            document.getElementById(`${sectionId}-section`).classList.remove('hidden');
+            
+            // Add active class to clicked tab
+            const activeTab = document.querySelector(`[onclick="showSection('${sectionId}')"]`);
+            activeTab.classList.add('tab-active');
+            activeTab.classList.remove('text-gray-500');
+            activeTab.classList.add('text-gray-700');
+            
+            // Add fade-in animation
+            document.getElementById(`${sectionId}-section`).classList.add('fade-in');
+            setTimeout(() => {
+                document.getElementById(`${sectionId}-section`).classList.remove('fade-in');
+            }, 500);
+        }
+        
+        // Add hover effects to all cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.insight-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.classList.add('shadow-lg');
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('shadow-lg');
+                });
+            });
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=S-Dreamer/contrarianinsights" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
 </html>
